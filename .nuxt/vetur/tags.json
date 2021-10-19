@@ -1,4 +1,7 @@
 {
+  "AddPlanField": {
+    "description": "Auto imported from components/AddPlanField.vue"
+  },
   "TrainingPlanLink": {
     "description": "Auto imported from components/TrainingPlanLink.vue"
   }

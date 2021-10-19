@@ -12,15 +12,36 @@
             color="blue-grey"
           ></v-text-field>
         </div>
-        <br />
-        <training-plan-link />
-        <br />
-        <training-plan-link />
-        <br />
-        <training-plan-link />
-        <br />
-        <training-plan-link />
+        <div
+          v-if="plans.length <= 0"
+          class="text-caption"
+          style="text-align: center; width: 100%"
+        >
+          No trainingplans found...
+        </div>
+        <div v-for="(plan, id) in plans" :key="id">
+          <training-plan-link
+            :trainingPlanId="plan.uid"
+            :userName="plan['created_by_name']"
+            :trainingPlanName="plan.title"
+            :percentage="0.4"
+            :createdAt="plan.created_at"
+          />
+          <br />
+        </div>
       </v-col>
     </v-row>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    plans: {
+      get() {
+        return this.$store.getters["plans/getAllPlans"];
+      },
+    },
+  },
+  methods: {},
+};
+</script>

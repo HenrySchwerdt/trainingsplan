@@ -6,9 +6,11 @@
           class="d-flex flex-column justify-space-between"
           style="height: 100%"
         >
-          <div class="text-h6">Trainingsplan: BA</div>
+          <div class="text-h6">{{ trainingPlanName }}</div>
           <div class="text-caption">
-            by <span>Heschwerdt</span> | Updated: <span>Heschwerdt</span>
+            by <span>{{ userName }}</span> | Updated:
+            <span v-if="createdAt">{{ createdAt.toDate() }}</span>
+            <span v-else>N.a.</span>
           </div>
         </div>
       </div>
@@ -44,6 +46,9 @@ export default {
     percentage: {
       type: Number,
       default: 0.8,
+    },
+    createdAt: {
+      default: "8.8.21",
     },
   },
 };

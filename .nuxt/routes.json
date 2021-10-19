@@ -1,5 +1,26 @@
 [
   {
+    "name": "app",
+    "path": "/app",
+    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/index.vue",
+    "chunkName": "pages/app/index",
+    "_name": "_20c0d609"
+  },
+  {
+    "name": "auth-login",
+    "path": "/auth/login",
+    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/auth/login.vue",
+    "chunkName": "pages/auth/login",
+    "_name": "_2eb4cd6d"
+  },
+  {
+    "name": "auth-register",
+    "path": "/auth/register",
+    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/auth/register.vue",
+    "chunkName": "pages/auth/register",
+    "_name": "_007eb84f"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/index.vue",
