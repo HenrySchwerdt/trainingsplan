@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _20c0d609 = () => interopDefault(import('../pages/app/index.vue' /* webpackChunkName: "pages/app/index" */))
+const _e72318ec = () => interopDefault(import('../pages/app/explore.vue' /* webpackChunkName: "pages/app/explore" */))
 const _2eb4cd6d = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _007eb84f = () => interopDefault(import('../pages/auth/register.vue' /* webpackChunkName: "pages/auth/register" */))
 const _19521af7 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -24,6 +25,10 @@ export const routerOptions = {
     path: "/app",
     component: _20c0d609,
     name: "app"
+  }, {
+    path: "/app/explore",
+    component: _e72318ec,
+    name: "app-explore"
   }, {
     path: "/auth/login",
     component: _2eb4cd6d,

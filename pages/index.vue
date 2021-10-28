@@ -19,15 +19,19 @@
         >
           No trainingplans found...
         </div>
-        <div v-for="(plan, id) in plans" :key="id">
-          <training-plan-link
-            :trainingPlanId="plan.uid"
-            :userName="plan['created_by_name']"
-            :trainingPlanName="plan.title"
-            :percentage="0.4"
-            :createdAt="plan.created_at"
-          />
-          <br />
+        <div
+          style="display: grid;grid-template-columns: repeat(auto-fill, 200px);justify-content: space-between;grid-gap: 20px;width: 100%"
+        >
+          <div v-for="(plan, id) in plans" :key="id">
+            <training-plan-link
+              :trainingPlanId="plan.uid"
+              :userName="plan['created_by_name']"
+              :trainingPlanName="plan.title"
+              :percentage="0.4"
+              :createdAt="plan.created_at"
+            />
+            <br />
+          </div>
         </div>
       </v-col>
     </v-row>

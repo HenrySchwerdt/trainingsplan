@@ -1,4 +1,5 @@
 export { default as AddPlanField } from '../../components/AddPlanField.vue'
+export { default as CertificatePresentation } from '../../components/CertificatePresentation.vue'
 export { default as TrainingPlanLink } from '../../components/TrainingPlanLink.vue'
 
 // nuxt/nuxt.js#8607

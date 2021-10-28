@@ -17,6 +17,7 @@ import nuxt_plugin_plugin_4a948131 from 'nuxt_plugin_plugin_4a948131' // Source:
 import nuxt_plugin_plugin_bc5e8f46 from 'nuxt_plugin_plugin_bc5e8f46' // Source: ./vuetify/plugin.js (mode: 'all')
 import nuxt_plugin_index_61f499a7 from 'nuxt_plugin_index_61f499a7' // Source: ./firebase/index.js (mode: 'all')
 import nuxt_plugin_serviceauthinitialize_15a2d088 from 'nuxt_plugin_serviceauthinitialize_15a2d088' // Source: ./firebase/service.auth.initialize.js (mode: 'all')
+import nuxt_plugin_vueflipclient_12ebc45b from 'nuxt_plugin_vueflipclient_12ebc45b' // Source: ../plugins/vueflip.client.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -224,6 +225,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_serviceauthinitialize_15a2d088 === 'function') {
     await nuxt_plugin_serviceauthinitialize_15a2d088(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vueflipclient_12ebc45b === 'function') {
+    await nuxt_plugin_vueflipclient_12ebc45b(app.context, inject)
   }
 
   // Lock enablePreview in context
