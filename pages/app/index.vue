@@ -3,12 +3,12 @@
     <div>{{ $store.state.user.displayName }}</div>
     <v-row class="mt-12" justify="center" align="center">
       <v-col cols="8">
-        <add-plan-field />
         <br />
         <br />
         <div
           style="display: grid;grid-template-columns: repeat(auto-fill, 200px);justify-content: space-between;grid-gap: 20px;width: 100%"
         >
+          <add-plan-field />
           <div v-for="(plan, id) in plans" :key="id">
             <training-plan-link
               :trainingPlanId="plan.uid"
@@ -25,7 +25,9 @@
   </div>
 </template>
 <script>
+import AddPlanField from "~/components/AddPlanField.vue";
 export default {
+  components: { AddPlanField },
   computed: {
     plans: {
       get() {

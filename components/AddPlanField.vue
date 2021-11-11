@@ -1,33 +1,29 @@
 <template>
-  <div style="width: 80%">
-    <div v-if="!$store.state.user">
-      You're not logged in.
+  <v-sheet
+    elevation="5"
+    rounded
+    height="200"
+    width="200"
+    style="background: url( 'https://media.istockphoto.com/photos/business-analyst-smiling-while-interpreting-financial-reports-showing-picture-id873492646') no-repeat center center;background-size: cover; overflow: hidden"
+  >
+    <div
+      style="height:100%;width:100%;background-color: rgba(255, 255, 255, .8);  
+ backdrop-filter: blur(10px);"
+      class="d-flex flex-column align-center justify-center container"
+    >
+      <v-icon style="font-size: 100px;" color="blue">
+        mdi-plus
+      </v-icon>
     </div>
-    <div v-else style="width: 100%">
-      <v-text-field
-        @keyup.enter="generatePlan"
-        v-model="planName"
-        label="Regular"
-        clearable
-        solo
-      ></v-text-field>
-    </div>
-  </div>
+  </v-sheet>
 </template>
 <script>
-import { mapActions } from "vuex";
-export default {
-  data: () => ({
-    planName: "",
-  }),
-  methods: {
-    ...mapActions({
-      addPlan: "plans/add",
-    }),
-    generatePlan() {
-      this.addPlan(this.planName);
-      this.planName = "";
-    },
-  },
-};
+export default {};
 </script>
+<style scoped>
+.container:hover {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+</style>

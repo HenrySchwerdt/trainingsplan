@@ -19,7 +19,6 @@ export default {
   async mounted() {
     try {
       await this.$store.dispatch("plans/bindPlansRef");
-      await this.$store.dispatch("tasks/bindTasksRef");
     } catch (e) {
       console.error(e);
     }

@@ -41,7 +41,7 @@
             class="elevation-5 d-flex flex-column justify-space-between align-start"
             style="height:180px;width:100%;   padding: 5px 5px 0 5px"
           >
-            <div class="text-subtitle-1 primary--text">
+            <div class="text-subtitle-1 primary--text" style="width:100%">
               <span v-if="abbreviation != ''" style="font-weight: bold;"
                 >{{ abbreviation }}:</span
               >{{ training }}

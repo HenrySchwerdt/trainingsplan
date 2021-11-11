@@ -25,23 +25,40 @@ export const actions = {
   /**
    * adds a list to a user
    */
-  add: firestoreAction(function(_firestoreObject, planName) {
+  add: firestoreAction(async function(
+    _firestoreObject,
+    { ref, title, due_date, items }
+  ) {
     if (
       this.$fire.auth.currentUser &&
-      planName &&
-      planName.length > 0 &&
-      planName.length < 50
+      title &&
+      due_date &&
+      items &&
+      title.length > 0 &&
+      title.length < 50
     ) {
-      this.$fire.firestore
+      const batch = this.$fire.firestore.batch();
+
+      batch.set(ref, {
+        title: title,
+        created_by: this.$fire.auth.currentUser.uid,
+        due_date: due_date,
+        created_by_name: this.$fire.auth.currentUser.displayName,
+        created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+      });
+      const collectionRef = this.$fire.firestore
         .collection("plans")
-        .doc()
-        .set({
-          title: planName,
-          created_by: this.$fire.auth.currentUser.uid,
-          created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
-          created_by_name: this.$fire.auth.currentUser.displayName,
-          comments: {},
+        .doc(ref.id)
+        .collection("trainings");
+      for (const { id, priority } of items) {
+        const itemRef = collectionRef.doc();
+        batch.set(itemRef, {
+          id: id,
+          progress: 0,
+          priority: priority,
         });
+      }
+      await batch.commit();
     }
   }),
 };

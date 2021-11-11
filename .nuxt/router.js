@@ -8,6 +8,8 @@ const _20c0d609 = () => interopDefault(import('../pages/app/index.vue' /* webpac
 const _e72318ec = () => interopDefault(import('../pages/app/explore.vue' /* webpackChunkName: "pages/app/explore" */))
 const _2eb4cd6d = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _007eb84f = () => interopDefault(import('../pages/auth/register.vue' /* webpackChunkName: "pages/auth/register" */))
+const _5cae5a7c = () => interopDefault(import('../pages/app/trainingsplan/create.vue' /* webpackChunkName: "pages/app/trainingsplan/create" */))
+const _555218e4 = () => interopDefault(import('../pages/app/trainingsplan/_id.vue' /* webpackChunkName: "pages/app/trainingsplan/_id" */))
 const _19521af7 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -37,6 +39,14 @@ export const routerOptions = {
     path: "/auth/register",
     component: _007eb84f,
     name: "auth-register"
+  }, {
+    path: "/app/trainingsplan/create",
+    component: _5cae5a7c,
+    name: "app-trainingsplan-create"
+  }, {
+    path: "/app/trainingsplan/:id?",
+    component: _555218e4,
+    name: "app-trainingsplan-id"
   }, {
     path: "/",
     component: _19521af7,

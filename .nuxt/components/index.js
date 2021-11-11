@@ -1,6 +1,9 @@
 export { default as AddPlanField } from '../../components/AddPlanField.vue'
 export { default as CertificatePresentation } from '../../components/CertificatePresentation.vue'
 export { default as TrainingPlanLink } from '../../components/TrainingPlanLink.vue'
+export { default as TrainingsPlanSelectorTrainingDraggable } from '../../components/trainingsPlanSelector/TrainingDraggable.vue'
+export { default as TrainingsPlanSelectorTrainingDropZone } from '../../components/trainingsPlanSelector/TrainingDropZone.vue'
+export { default as TrainingsPlanSelectorContainer } from '../../components/trainingsPlanSelector/TrainingsPlanSelectorContainer.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

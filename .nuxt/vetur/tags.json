@@ -7,5 +7,14 @@
   },
   "TrainingPlanLink": {
     "description": "Auto imported from components/TrainingPlanLink.vue"
+  },
+  "TrainingsPlanSelectorTrainingDraggable": {
+    "description": "Auto imported from components/trainingsPlanSelector/TrainingDraggable.vue"
+  },
+  "TrainingsPlanSelectorTrainingDropZone": {
+    "description": "Auto imported from components/trainingsPlanSelector/TrainingDropZone.vue"
+  },
+  "TrainingsPlanSelectorContainer": {
+    "description": "Auto imported from components/trainingsPlanSelector/TrainingsPlanSelectorContainer.vue"
   }
 }
