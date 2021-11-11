@@ -1,12 +1,15 @@
 <template>
-  <div style="height: 200px; width:200px" @click="changeFront">
+  <div
+    style="height: 200px; width:200px"
+    @click="$router.push('/app/trainingsplan/' + trainingPlanId)"
+  >
     <vue-flip
       horizontal
       height="65"
       width="65"
       transition="1s"
       v-model="flipped"
-      active-click
+      active-hover
     >
       <template v-slot:front>
         <v-sheet

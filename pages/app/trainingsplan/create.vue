@@ -95,6 +95,7 @@ export default {
           due_date: this.trainingsPlan.due_date,
           items: this.orderItems(this.trainingsPlan.items),
         });
+        this.$router.push("/app/trainingsplan/" + trainingsPlanRef.id);
       }
     },
     orderItems(items) {

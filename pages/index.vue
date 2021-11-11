@@ -24,7 +24,7 @@
         >
           <div v-for="(plan, id) in plans" :key="id">
             <training-plan-link
-              :trainingPlanId="plan.uid"
+              :trainingPlanId="plan.id"
               :userName="plan['created_by_name']"
               :trainingPlanName="plan.title"
               :percentage="0.4"

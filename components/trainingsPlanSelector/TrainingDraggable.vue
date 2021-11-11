@@ -1,7 +1,7 @@
 <template>
   <v-sheet
-    width="100"
-    height="100"
+    :width="width"
+    :height="height"
     elevation="2"
     :style="
       'width: 100px; height: 100px; font-weight: bold; background:' +
@@ -28,6 +28,14 @@ export default {
     type: {
       type: String,
       required: true,
+    },
+    width: {
+      type: String,
+      default: "100",
+    },
+    height: {
+      type: String,
+      default: "100",
     },
   },
   data: () => ({

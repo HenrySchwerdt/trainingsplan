@@ -4,6 +4,7 @@
     rounded
     height="200"
     width="200"
+    @click="$router.push('/app/trainingsplan/create')"
     style="background: url( 'https://media.istockphoto.com/photos/business-analyst-smiling-while-interpreting-financial-reports-showing-picture-id873492646') no-repeat center center;background-size: cover; overflow: hidden"
   >
     <div

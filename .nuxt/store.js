@@ -20,7 +20,7 @@ let store = {};
   store.modules = store.modules || {}
 
   resolveStoreModules(require('../store/certificates.js'), 'certificates.js')
-  resolveStoreModules(require('../store/planItems.js'), 'planItems.js')
+  resolveStoreModules(require('../store/plan.js'), 'plan.js')
   resolveStoreModules(require('../store/plans.js'), 'plans.js')
 
   // If the environment supports hot reloading...
@@ -30,7 +30,7 @@ let store = {};
     module.hot.accept([
       '../store/certificates.js',
       '../store/index.js',
-      '../store/planItems.js',
+      '../store/plan.js',
       '../store/plans.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
