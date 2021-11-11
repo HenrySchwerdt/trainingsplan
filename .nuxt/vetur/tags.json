@@ -5,6 +5,9 @@
   "CertificatePresentation": {
     "description": "Auto imported from components/CertificatePresentation.vue"
   },
+  "PopUpCard": {
+    "description": "Auto imported from components/PopUpCard.vue"
+  },
   "TrainingPlanLink": {
     "description": "Auto imported from components/TrainingPlanLink.vue"
   },

@@ -1,5 +1,6 @@
 export { default as AddPlanField } from '../../components/AddPlanField.vue'
 export { default as CertificatePresentation } from '../../components/CertificatePresentation.vue'
+export { default as PopUpCard } from '../../components/PopUpCard.vue'
 export { default as TrainingPlanLink } from '../../components/TrainingPlanLink.vue'
 export { default as TrainingsPlanSelectorTrainingDraggable } from '../../components/trainingsPlanSelector/TrainingDraggable.vue'
 export { default as TrainingsPlanSelectorTrainingDropZone } from '../../components/trainingsPlanSelector/TrainingDropZone.vue'
