@@ -4,7 +4,11 @@
     :height="height"
     elevation="2"
     :style="
-      'width: 100px; height: 100px; font-weight: bold; background:' +
+      'width: ' +
+        width +
+        'px; height:' +
+        height +
+        'px; font-weight: bold; background:' +
         colorCodes[type] +
         '; color: white;margin:0;padding:0'
     "
@@ -16,6 +20,7 @@
 
 <script>
 export default {
+  name: "TrainingDraggable",
   props: {
     id: {
       type: String,
@@ -30,12 +35,12 @@ export default {
       required: true,
     },
     width: {
-      type: String,
-      default: "100",
+      type: Number,
+      default: 100,
     },
     height: {
-      type: String,
-      default: "100",
+      type: Number,
+      default: 100,
     },
   },
   data: () => ({

@@ -53,7 +53,7 @@ export const actions = {
       for (const { id, priority } of items) {
         const itemRef = collectionRef.doc();
         batch.set(itemRef, {
-          id: id,
+          certificate_id: id,
           progress: 0,
           priority: priority,
         });

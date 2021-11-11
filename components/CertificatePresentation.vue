@@ -70,7 +70,7 @@
 
             <div
               class="d-flex justify-space-between flex-row"
-              style="width: 100%; heigth: 100%"
+              style="width: 100%; height: 100%"
             >
               <div></div>
               <div class="text-caption" v-if="duration != ''">

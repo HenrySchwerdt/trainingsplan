@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@nuxtjs/firebase": "^7.6.1",
+    "apexcharts": "^3.29.0",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "vue-apexcharts": "^1.6.2",
     "vue-flip": "^1.0.2",
     "vue-kanban": "^1.8.0",
     "vuetify": "^2.5.5",

@@ -35,6 +35,19 @@ export const actions = {
     unbindFirestoreRef("trainings", false);
     unbindFirestoreRef("plan", false);
   }),
+  updateProgress: firestoreAction(async function(
+    _firestoreObject,
+    { planId, trainingId, progress }
+  ) {
+    await this.$fire.firestore
+      .collection("plans")
+      .doc(planId)
+      .collection("trainings")
+      .doc(trainingId)
+      .update({
+        progress: progress,
+      });
+  }),
 };
 
 export const getters = {
