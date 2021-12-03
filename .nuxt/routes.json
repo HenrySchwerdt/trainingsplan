@@ -14,6 +14,13 @@
     "_name": "_e72318ec"
   },
   {
+    "name": "app-settings",
+    "path": "/app/settings",
+    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/settings.vue",
+    "chunkName": "pages/app/settings",
+    "_name": "_d0c74d88"
+  },
+  {
     "name": "auth-login",
     "path": "/auth/login",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/auth/login.vue",

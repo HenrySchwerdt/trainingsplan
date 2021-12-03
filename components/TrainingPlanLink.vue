@@ -1,67 +1,42 @@
 <template>
   <div
-    style="height: 200px; width:200px"
+    style="height: 150px; width:150px; cursor: pointer;"
     @click="$router.push('/app/trainingsplan/' + trainingPlanId)"
   >
-    <vue-flip
-      horizontal
-      height="65"
-      width="65"
-      transition="1s"
-      v-model="flipped"
-      active-hover
+    <v-sheet
+      elevation="5"
+      rounded
+      height="150"
+      width="150"
+      :color="this.percentage >= 100 ? '#200A58' : '#A82465'"
+      class="d-flex justify-center align-center"
+      style="width: 100%; height: 100%"
     >
-      <template v-slot:front>
-        <v-sheet
-          elevation="5"
-          rounded
-          v-if="front"
-          height="200"
-          width="200"
-          style="background: url( 'https://media.istockphoto.com/photos/business-analyst-smiling-while-interpreting-financial-reports-showing-picture-id873492646') no-repeat center center;background-size: cover;padding-top:125px; overflow: hidden"
-        >
-          <div
-            v-if="front"
-            class="rounded-t-lg elevation-5"
-            style="height:75px;width:100%;background-color: rgba(255, 255, 255, .8);  
- backdrop-filter: blur(10px); padding: 5px"
-          >
-            <div class="text-h6 primary--text">
-              {{ trainingPlanName }}
-            </div>
-            <div class="text-caption primary--text">
-              by <span>{{ userName }}</span>
-            </div>
-          </div>
-        </v-sheet>
-      </template>
-      <template v-slot:back>
-        <v-sheet
-          v-if="!front"
-          rounded
-          elevation="5"
-          height="200"
-          width="200"
-          class="d-flex flex-column justify-center align-center"
-          style="text-align: center"
-        >
-          <v-progress-circular
-            :size="150"
-            :width="15"
-            :value="90"
-            color="teal"
-            :rotate="-90"
-          >
-            {{ 90 }}%
-          </v-progress-circular></v-sheet
-        >
-      </template>
-    </vue-flip>
+      <div
+        class="d-flex justify-center align-center"
+        style="width: 100%; height: 100%;"
+      >
+        <apexchart
+          width="100%"
+          height="100%"
+          type="donut"
+          :options="options"
+          :series="series"
+        ></apexchart>
+      </div>
+      <div style="position: absolute;">
+        <div class="text-h5" style="color:white">
+          {{ trainingPlanName }}
+        </div>
+        <div class="text-caption" style="color:white">
+          by <span>{{ userName }}</span>
+        </div>
+      </div>
+    </v-sheet>
   </div>
 </template>
 
 <script>
-import VueFlip from "vue-flip";
 export default {
   props: {
     trainingPlanId: {
@@ -78,7 +53,7 @@ export default {
     },
     percentage: {
       type: Number,
-      default: 0.8,
+      default: 20,
     },
     createdAt: {
       default: "8.8.21",
@@ -87,18 +62,67 @@ export default {
       default: 100,
     },
   },
-  data: () => ({
-    flipped: false,
-    front: true,
-  }),
-  components: {
-    "vue-flip": VueFlip,
-  },
-  methods: {
-    changeFront() {
-      setTimeout(() => {
-        this.front = !this.front;
-      }, 300);
+  computed: {
+    series() {
+      return [this.percentage, 100 - this.percentage];
+    },
+    options() {
+      const options = {
+        plotOptions: {
+          pie: {
+            customScale: 1,
+            donut: {
+              size: "0%",
+            },
+          },
+        },
+        fill: {
+          colors:
+            this.percentage >= 100
+              ? ["#200A58", "#200A58"]
+              : ["#A82465", "#b3668d"],
+        },
+        legend: {
+          show: false,
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        markers: {
+          enabled: false,
+        },
+        subtitle: {
+          enabled: false,
+        },
+        tooltip: {
+          enabled: false,
+        },
+        stroke: {
+          show: false,
+        },
+        states: {
+          normal: {
+            filter: {
+              type: "none",
+              value: 0,
+            },
+          },
+          hover: {
+            filter: {
+              type: "none",
+              value: 0.15,
+            },
+          },
+          active: {
+            allowMultipleDataPointsSelection: false,
+            filter: {
+              type: "none",
+              value: 0.35,
+            },
+          },
+        },
+      };
+      return options;
     },
   },
 };

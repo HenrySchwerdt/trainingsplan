@@ -36,17 +36,32 @@ export const actions = {
     unbindFirestoreRef("plan", false);
   }),
   updateProgress: firestoreAction(async function(
-    _firestoreObject,
+    { state },
     { planId, trainingId, progress }
   ) {
-    await this.$fire.firestore
+    const ref = this.$fire.firestore.collection("plans").doc(planId);
+    const batch = this.$fire.firestore.batch();
+
+    const totalPercent =
+      state.trainings
+        .map((x) => {
+          return x.id == trainingId ? progress : x.progress;
+        })
+        .reduce((a, b) => a + b) / state.trainings.length;
+
+    batch.update(ref, {
+      percentange: totalPercent,
+    });
+
+    const itemRef = this.$fire.firestore
       .collection("plans")
       .doc(planId)
       .collection("trainings")
-      .doc(trainingId)
-      .update({
-        progress: progress,
-      });
+      .doc(trainingId);
+    batch.update(itemRef, {
+      progress: progress,
+    });
+    await batch.commit();
   }),
 };
 

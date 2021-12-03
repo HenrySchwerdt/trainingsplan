@@ -2,6 +2,7 @@
   <v-sheet
     :width="width"
     :height="height"
+    :rounded="rounded"
     elevation="2"
     :style="
       'width: ' +
@@ -41,6 +42,10 @@ export default {
     height: {
       type: Number,
       default: 100,
+    },
+    rounded: {
+      type: Boolean,
+      default: false,
     },
   },
   data: () => ({

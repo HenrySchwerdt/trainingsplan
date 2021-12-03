@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <br /><br /><br />
+    <br />
     <v-row>
-      <v-col cols="12">
+      <v-col cols="3" style="perspective: 3rem;">
         <v-sheet>
           <div class="text-h4" v-if="plan && plan.title">{{ plan.title }}</div>
           <div class="text-caption" v-if="plan && plan.created_by_name">
@@ -10,7 +10,7 @@
           </div>
         </v-sheet>
       </v-col>
-
+      <v-col cols="9"></v-col>
       <v-col
         cols="7"
         v-if="
@@ -21,61 +21,69 @@
         "
       >
         <v-row>
-          <v-col cols="12">
-            <div
-              v-for="(training, idx) in trainings"
-              :key="idx"
-              class="d-flex flex-row justify-start align-center"
-            >
-              <TrainingDraggable
-                class="mt-3 mb-3"
+          <v-col cols="12" style="perspective: 10rem;">
+            <v-sheet class="pa-3">
+              <v-sheet
+                elevation="2"
+                rounded
+                v-for="(training, idx) in trainings"
                 :key="idx"
-                :id="training.id"
-                :height="100"
-                :width="150"
-                :title="
-                  getCertificatebyId(training.certificate_id).abbreviation
-                "
-                :type="getCertificatebyId(training.certificate_id).type"
-              ></TrainingDraggable>
-              <div class="ml-4" style="flex:1">
-                <div
-                  style="border-style: groove; width: 100%; height:50px;padding: 1px"
-                >
+                class="d-flex flex-row justify-start align-center pl-2 pr-2 ma-2"
+              >
+                <div>
+                  <TrainingDraggable
+                    class="mt-3 mb-3"
+                    rounded
+                    :key="idx"
+                    :id="training.id"
+                    :height="100"
+                    :width="150"
+                    :title="
+                      getCertificatebyId(training.certificate_id).display_name
+                    "
+                    :type="getCertificatebyId(training.certificate_id).type"
+                  ></TrainingDraggable>
+                </div>
+                <div class="ml-4" style="flex:1;">
                   <div
-                    :style="
-                      'width:' +
-                        training.progress +
-                        '%; height:100%;background:' +
+                    style="border-style: groove; width: 100%; height:50px;padding: 1px"
+                  >
+                    <div
+                      :style="
+                        'width:' +
+                          training.progress +
+                          '%; height:100%;background:' +
+                          colorCodes[
+                            getCertificatebyId(training.certificate_id).type
+                          ]
+                      "
+                    ></div>
+                  </div>
+                  <div
+                    v-if="$store.user && $store.user.uid == plan.created_by"
+                    style="height:10px"
+                  >
+                    <v-slider
+                      :value="training.progress"
+                      style="padding: 0;margin:0;"
+                      @change="updateProgress($event, training.id)"
+                      step="10"
+                      :color="
                         colorCodes[
                           getCertificatebyId(training.certificate_id).type
                         ]
-                    "
-                  ></div>
+                      "
+                      track-color="grey"
+                      ticks="always"
+                    ></v-slider>
+                  </div>
                 </div>
-                <div
-                  v-if="$fire.auth.currentUser.uid == plan.created_by"
-                  style="height:10px"
-                >
-                  <v-slider
-                    :value="training.progress"
-                    style="padding: 0;margin:0;"
-                    @change="updateProgress($event, training.id)"
-                    step="10"
-                    :color="
-                      colorCodes[
-                        getCertificatebyId(training.certificate_id).type
-                      ]
-                    "
-                    track-color="grey"
-                    ticks="always"
-                  ></v-slider>
-                </div>
-              </div>
-            </div>
+              </v-sheet>
+            </v-sheet>
           </v-col>
         </v-row>
       </v-col>
+
       <v-col
         cols="5"
         v-if="
@@ -84,14 +92,17 @@
             certificatesID &&
             certificatesID.length > 0
         "
+        style="perspective: 10rem;"
       >
-        <apexchart
-          width="100%"
-          height="100%"
-          type="donut"
-          :options="options"
-          :series="series"
-        ></apexchart>
+        <v-sheet class="pa-1" width="100%" height="100%">
+          <apexchart
+            width="100%"
+            height="100%"
+            type="donut"
+            :options="options"
+            :series="series"
+          ></apexchart>
+        </v-sheet>
       </v-col>
     </v-row>
   </v-container>

@@ -1,20 +1,53 @@
 <template>
-  <div>
-    <div>{{ $store.state.user.displayName }}</div>
+  <div style="margin-top:-25px;">
     <v-row class="mt-12" justify="center" align="center">
       <v-col cols="8">
+        <div class="text-h4 mb-2">
+          My trainings path
+        </div>
+        <v-divider inset></v-divider>
         <br />
+        <div class="text-overline">
+          In progress plans:
+        </div>
         <br />
         <div
-          style="display: grid;grid-template-columns: repeat(auto-fill, 200px);justify-content: space-between;grid-gap: 20px;width: 100%"
+          style="display: grid;grid-template-columns: repeat(auto-fill, 150px);justify-content: space-between;grid-gap: 15px;width: 100%"
         >
           <add-plan-field />
-          <div v-for="(plan, id) in plans" :key="id">
+          <div
+            v-for="(plan, id) in plans.filter((x) => x.percentange < 100)"
+            :key="id"
+          >
             <training-plan-link
               :trainingPlanId="plan.id"
               :userName="plan['created_by_name']"
               :trainingPlanName="plan.title"
-              :percentage="0.4"
+              :percentage="plan.percentange"
+              :createdAt="plan.created_at"
+            />
+            <br />
+            <br />
+          </div>
+        </div>
+        <v-divider></v-divider>
+        <br />
+        <div class="text-overline">
+          Completed plans:
+        </div>
+        <br />
+        <div
+          style="display: grid;grid-template-columns: repeat(auto-fill, 150px);justify-content: space-between;grid-gap: 15px;width: 100%"
+        >
+          <div
+            v-for="(plan, id) in plans.filter((x) => x.percentange >= 100)"
+            :key="id"
+          >
+            <training-plan-link
+              :trainingPlanId="plan.id"
+              :userName="plan['created_by_name']"
+              :trainingPlanName="plan.title"
+              :percentage="plan.percentange"
               :createdAt="plan.created_at"
             />
             <br />

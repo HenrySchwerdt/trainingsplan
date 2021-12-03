@@ -12,7 +12,7 @@
         Login
       </v-card-title>
       <v-card-text>
-        <v-form ref="registerForm" v-model="valid" lazy-validation>
+        <v-form ref="loginForm" v-model="valid" lazy-validation>
           <v-row>
             <v-col cols="12">
               <v-text-field
@@ -71,14 +71,13 @@ export default {
     ],
   }),
   methods: {
-    async firebaseLogin() {
+    firebaseLogin() {
       if (this.$refs.loginForm.validate()) {
         try {
-          await this.$fire.auth.signInWithEmailAndPassword(
-            this.loginEmail.trim(),
-            this.loginPassword
-          );
-          this.$router.push("/app");
+          this.$fire.auth
+            .signInWithEmailAndPassword(this.email.trim(), this.password)
+            // eslint-disable-next-line no-unused-vars
+            .then((_x) => this.$router.push("/app"));
         } catch (e) {
           alert(e);
         }

@@ -43,6 +43,7 @@ export const actions = {
         title: title,
         created_by: this.$fire.auth.currentUser.uid,
         due_date: due_date,
+        percentange: 0,
         created_by_name: this.$fire.auth.currentUser.displayName,
         created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
       });

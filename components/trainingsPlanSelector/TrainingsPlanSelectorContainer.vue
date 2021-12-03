@@ -14,7 +14,7 @@
               :draggable="true"
               :id="items[index]"
               :title="
-                certificates[certificatesID.indexOf(items[index])].abbreviation
+                certificates[certificatesID.indexOf(items[index])].display_name
               "
               :type="certificates[certificatesID.indexOf(items[index])].type"
             ></TrainingDraggable>
@@ -56,7 +56,7 @@
                   <TrainingDraggable
                     class="ma-3"
                     :id="item.id"
-                    :title="item.abbreviation"
+                    :title="item.display_name"
                     :type="item.type"
                   ></TrainingDraggable>
                 </div>
