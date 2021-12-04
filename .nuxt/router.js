@@ -4,13 +4,13 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _20c0d609 = () => interopDefault(import('../pages/app/index.vue' /* webpackChunkName: "pages/app/index" */))
 const _e72318ec = () => interopDefault(import('../pages/app/explore.vue' /* webpackChunkName: "pages/app/explore" */))
 const _d0c74d88 = () => interopDefault(import('../pages/app/settings.vue' /* webpackChunkName: "pages/app/settings" */))
 const _2eb4cd6d = () => interopDefault(import('../pages/auth/login.vue' /* webpackChunkName: "pages/auth/login" */))
 const _007eb84f = () => interopDefault(import('../pages/auth/register.vue' /* webpackChunkName: "pages/auth/register" */))
 const _5cae5a7c = () => interopDefault(import('../pages/app/trainingsplan/create.vue' /* webpackChunkName: "pages/app/trainingsplan/create" */))
 const _555218e4 = () => interopDefault(import('../pages/app/trainingsplan/_id.vue' /* webpackChunkName: "pages/app/trainingsplan/_id" */))
+const _7088eb5c = () => interopDefault(import('../pages/app/_userId.vue' /* webpackChunkName: "pages/app/_userId" */))
 const _19521af7 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -25,10 +25,6 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/app",
-    component: _20c0d609,
-    name: "app"
-  }, {
     path: "/app/explore",
     component: _e72318ec,
     name: "app-explore"
@@ -52,6 +48,10 @@ export const routerOptions = {
     path: "/app/trainingsplan/:id?",
     component: _555218e4,
     name: "app-trainingsplan-id"
+  }, {
+    path: "/app/:userId?",
+    component: _7088eb5c,
+    name: "app-userId"
   }, {
     path: "/",
     component: _19521af7,

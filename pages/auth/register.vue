@@ -117,6 +117,19 @@ export default {
               return this.$fire.auth.currentUser.sendEmailVerification();
             })
             .then(() => {
+              this.$fire.firestore
+                .collection("users")
+                .doc(this.$fire.auth.currentUser.uid)
+                .set({
+                  userName: this.username,
+                  joined_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+                  // doneTrainings: 0,
+                  // donePlans: 0,
+                  // numberOfPlans: 0,
+                  // numberOfTrainings: 0,
+                });
+            })
+            .then(() => {
               this.$router.push("/app");
             });
         } catch (e) {

@@ -10,12 +10,9 @@
       width="150"
       :color="this.percentage >= 100 ? '#200A58' : '#A82465'"
       class="d-flex justify-center align-center"
-      style="width: 100%; height: 100%"
+      style="width: 100%; height: 100%;overflow:hidden"
     >
-      <div
-        class="d-flex justify-center align-center"
-        style="width: 100%; height: 100%;"
-      >
+      <div style="width: 100%; height: 100%;" v-if="this.percentage < 100">
         <apexchart
           width="100%"
           height="100%"
@@ -23,6 +20,15 @@
           :options="options"
           :series="series"
         ></apexchart>
+      </div>
+      <div
+        class="d-flex justify-center align-center"
+        style="width: 100%; height: 100%;"
+        v-else
+      >
+        <v-icon color="#5f4c8f" style="font-size:280px">
+          mdi-check-bold
+        </v-icon>
       </div>
       <div style="position: absolute;">
         <div class="text-h5" style="color:white">

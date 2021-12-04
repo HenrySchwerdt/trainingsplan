@@ -76,8 +76,7 @@ export default {
         try {
           this.$fire.auth
             .signInWithEmailAndPassword(this.email.trim(), this.password)
-            // eslint-disable-next-line no-unused-vars
-            .then((_x) => this.$router.push("/app"));
+            .then(() => this.$router.push("/app"));
         } catch (e) {
           alert(e);
         }

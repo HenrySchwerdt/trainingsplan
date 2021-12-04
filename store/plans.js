@@ -47,6 +47,16 @@ export const actions = {
         created_by_name: this.$fire.auth.currentUser.displayName,
         created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
       });
+
+      // const increment = this.$fire.firestore.FieldValue.increment(1);
+
+      // const userRef = this.$fire.firestore
+      //   .collection("users")
+      //   .doc(this.$fire.auth.currentUser.uid);
+      // batch.update(userRef, {
+      //   numberOfPlans: increment,
+      // });
+
       const collectionRef = this.$fire.firestore
         .collection("plans")
         .doc(ref.id)

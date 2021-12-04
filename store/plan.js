@@ -25,6 +25,7 @@ export const actions = {
           .collection("plans")
           .doc(planId)
           .collection("trainings")
+          .orderBy("priority", "asc")
       )
     );
   }),

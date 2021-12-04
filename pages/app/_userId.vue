@@ -2,8 +2,15 @@
   <div style="margin-top:-25px;">
     <v-row class="mt-12" justify="center" align="center">
       <v-col cols="8">
-        <div class="text-h4 mb-2">
+        <div
+          v-if="this.$route.params.userId == this.$fire.auth.currentUser.uid"
+          class="text-h4 mb-2"
+        >
           My trainings path
+        </div>
+        <div v-else class="text-h4 mb-2">
+          's trainings path
+          <!-- TODO change this -->
         </div>
         <v-divider inset></v-divider>
         <br />
@@ -26,10 +33,10 @@
               :percentage="plan.percentange"
               :createdAt="plan.created_at"
             />
-            <br />
-            <br />
           </div>
         </div>
+        <br />
+        <br />
         <v-divider></v-divider>
         <br />
         <div class="text-overline">
@@ -65,7 +72,8 @@ export default {
     plans: {
       get() {
         return this.$store.getters["plans/getIndividualPlans"](
-          this.$fire.auth.currentUser.uid
+          this.$route.params.userId
+          //this.$fire.auth.currentUser.uid
         );
       },
     },

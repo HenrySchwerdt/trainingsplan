@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" flat class="mt-2">
+    <v-app-bar app color="white" flat class="pt-2">
       <div>
         <a href="/">
           <img
@@ -12,7 +12,10 @@
         </a>
       </div>
       <v-spacer></v-spacer>
-      <a v-if="$store.state.user" href="/app" style="text-decoration: none"
+      <a
+        v-if="$store.state.user"
+        :href="'/app/' + $fire.auth.currentUser.uid"
+        style="text-decoration: none"
         ><v-btn icon color="#A82465"><v-icon> mdi-account</v-icon></v-btn></a
       >
       <a

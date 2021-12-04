@@ -9,7 +9,6 @@
           <v-text-field
             label="Search user or plans"
             append-icon="mdi-magnify"
-            color="blue-grey"
           ></v-text-field>
         </div>
         <div

@@ -21,6 +21,7 @@
     "vue-apexcharts": "^1.6.2",
     "vue-flip": "^1.0.2",
     "vue-kanban": "^1.8.0",
+    "vue3-discordpicker": "^1.1.0",
     "vuetify": "^2.5.5",
     "vuexfire": "^3.2.5"
   },

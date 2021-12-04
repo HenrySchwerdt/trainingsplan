@@ -5,6 +5,9 @@
   "CertificatePresentation": {
     "description": "Auto imported from components/CertificatePresentation.vue"
   },
+  "CommentSection": {
+    "description": "Auto imported from components/CommentSection.vue"
+  },
   "PopUpCard": {
     "description": "Auto imported from components/PopUpCard.vue"
   },
@@ -19,5 +22,8 @@
   },
   "TrainingsPlanSelectorContainer": {
     "description": "Auto imported from components/trainingsPlanSelector/TrainingsPlanSelectorContainer.vue"
+  },
+  "CommentsCommentDisplay": {
+    "description": "Auto imported from components/comments/CommentDisplay.vue"
   }
 }

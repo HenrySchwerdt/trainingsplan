@@ -1,18 +1,26 @@
 <template>
   <v-container>
     <br />
+    <v-sheet>
+      <div
+        class="text-h4 d-flex flex-row align-center"
+        v-if="plan && plan.title"
+      >
+        {{ plan.title }}
+        <v-btn text x-small color="primary" class="ml-2">Follow</v-btn>
+      </div>
+      <div class="text-caption" v-if="plan && plan.created_by_name">
+        <a :href="'/app/' + plan.created_by" style="text-decoration: none; "
+          ><b>@{{ plan.created_by_name }}</b></a
+        >
+      </div>
+    </v-sheet>
+
     <v-row>
-      <v-col cols="3" style="perspective: 3rem;">
-        <v-sheet>
-          <div class="text-h4" v-if="plan && plan.title">{{ plan.title }}</div>
-          <div class="text-caption" v-if="plan && plan.created_by_name">
-            <b>by: </b>{{ plan.created_by_name }}
-          </div>
-        </v-sheet>
-      </v-col>
-      <v-col cols="9"></v-col>
       <v-col
-        cols="7"
+        cols="12"
+        lg="7"
+        xl="7"
         v-if="
           trainings &&
             trainings.length > 0 &&
@@ -60,7 +68,10 @@
                     ></div>
                   </div>
                   <div
-                    v-if="$store.user && $store.user.uid == plan.created_by"
+                    v-if="
+                      $fire.auth.currentUser &&
+                        $fire.auth.currentUser.uid == plan.created_by
+                    "
                     style="height:10px"
                   >
                     <v-slider
@@ -85,7 +96,10 @@
       </v-col>
 
       <v-col
-        cols="5"
+        class=".d-xs-none"
+        cols="12"
+        xl="5"
+        lg="5"
         v-if="
           trainings &&
             trainings.length > 0 &&
@@ -104,20 +118,16 @@
           ></apexchart>
         </v-sheet>
       </v-col>
+      <v-col cols="12" order="3">
+        <comment-section :planId="this.$route.params.id" />
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import CommentSection from "~/components/CommentSection.vue";
 import TrainingDraggable from "~/components/trainingsPlanSelector/TrainingDraggable.vue";
-Array.prototype.groupBy = function(prop) {
-  return this.reduce(function(groups, item) {
-    const val = item[prop];
-    groups[val] = groups[val] || [];
-    groups[val].push(item);
-    return groups;
-  }, {});
-};
 export default {
   data: () => ({
     colorCodes: {
@@ -170,21 +180,10 @@ export default {
       },
     },
     series() {
-      const series = [];
-      const updatedData = this.trainings.map((x) => {
-        const cert = this.getCertificatebyId(x.certificate_id);
-        x.type = cert.type;
-        return x;
-      });
-      const groupedData = updatedData.groupBy("type");
-      for (const value of Object.values(groupedData)) {
-        series.push(
-          value.map((x) => x.progress).reduce((a, b) => a + b, 0) /
-            (value.length * 100)
-        );
-      }
+      const series = this.trainings.map((x) => x.progress);
+
       series.push(
-        Object.keys(groupedData).length - series.reduce((a, b) => a + b, 0)
+        100 * this.trainings.length - series.reduce((a, b) => a + b, 0)
       );
       return series;
     },
@@ -195,11 +194,8 @@ export default {
         return x;
       });
 
-      const groupedData = updatedData.groupBy("type");
-      const colors = [];
-      for (const item of Object.keys(groupedData)) {
-        colors.push(this.colorCodes[item]);
-      }
+      const colors = updatedData.map((x) => this.colorCodes[x.type]);
+
       colors.push("#ffffff");
       const options = {
         plotOptions: {
@@ -219,11 +215,41 @@ export default {
         dataLabels: {
           enabled: false,
         },
+        markers: {
+          enabled: false,
+        },
+        subtitle: {
+          enabled: false,
+        },
+        tooltip: {
+          enabled: false,
+        },
+        states: {
+          normal: {
+            filter: {
+              type: "none",
+              value: 0,
+            },
+          },
+          hover: {
+            filter: {
+              type: "none",
+              value: 0.15,
+            },
+          },
+          active: {
+            allowMultipleDataPointsSelection: false,
+            filter: {
+              type: "none",
+              value: 0.35,
+            },
+          },
+        },
       };
       return options;
     },
   },
-  components: { TrainingDraggable },
+  components: { TrainingDraggable, CommentSection },
 };
 </script>
 

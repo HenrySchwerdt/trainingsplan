@@ -1,12 +1,5 @@
 [
   {
-    "name": "app",
-    "path": "/app",
-    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/index.vue",
-    "chunkName": "pages/app/index",
-    "_name": "_20c0d609"
-  },
-  {
     "name": "app-explore",
     "path": "/app/explore",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/explore.vue",
@@ -47,6 +40,13 @@
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/trainingsplan/_id.vue",
     "chunkName": "pages/app/trainingsplan/_id",
     "_name": "_555218e4"
+  },
+  {
+    "name": "app-userId",
+    "path": "/app/:userId?",
+    "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/_userId.vue",
+    "chunkName": "pages/app/_userId",
+    "_name": "_7088eb5c"
   },
   {
     "name": "index",
