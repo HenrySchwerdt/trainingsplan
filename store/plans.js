@@ -25,7 +25,7 @@ export const actions = {
   /**
    * adds a list to a user
    */
-  add: firestoreAction(async function(
+  add: firestoreAction(function(
     _firestoreObject,
     { ref, title, due_date, items }
   ) {
@@ -37,39 +37,31 @@ export const actions = {
       title.length > 0 &&
       title.length < 50
     ) {
-      const batch = this.$fire.firestore.batch();
-
-      batch.set(ref, {
-        title: title,
-        created_by: this.$fire.auth.currentUser.uid,
-        due_date: due_date,
-        percentange: 0,
-        created_by_name: this.$fire.auth.currentUser.displayName,
-        created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
-      });
-
-      // const increment = this.$fire.firestore.FieldValue.increment(1);
-
-      // const userRef = this.$fire.firestore
-      //   .collection("users")
-      //   .doc(this.$fire.auth.currentUser.uid);
-      // batch.update(userRef, {
-      //   numberOfPlans: increment,
-      // });
-
-      const collectionRef = this.$fire.firestore
-        .collection("plans")
-        .doc(ref.id)
-        .collection("trainings");
-      for (const { id, priority } of items) {
-        const itemRef = collectionRef.doc();
-        batch.set(itemRef, {
-          certificate_id: id,
-          progress: 0,
-          priority: priority,
+      ref
+        .set({
+          title: title,
+          created_by: this.$fire.auth.currentUser.uid,
+          due_date: due_date,
+          percentange: 0,
+          created_by_name: this.$fire.auth.currentUser.displayName,
+          created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => {
+          const batch = this.$fire.firestore.batch();
+          const collectionRef = this.$fire.firestore
+            .collection("plans")
+            .doc(ref.id)
+            .collection("trainings");
+          for (const { id, priority } of items) {
+            const itemRef = collectionRef.doc();
+            batch.set(itemRef, {
+              certificate_id: id,
+              progress: 0,
+              priority: priority,
+            });
+          }
+          batch.commit();
         });
-      }
-      await batch.commit();
     }
   }),
 };

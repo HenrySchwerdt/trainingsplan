@@ -36,6 +36,7 @@
         >
           My trainings path
         </div>
+
         <div v-else-if="currentUser" class="text-h4 mb-2">
           <span class="primary--text">{{ currentUser.userName }}</span
           >'s trainings path
