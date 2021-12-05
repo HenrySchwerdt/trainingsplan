@@ -12,29 +12,43 @@
       class="d-flex justify-center align-center"
       style="width: 100%; height: 100%;overflow:hidden"
     >
-      <div style="width: 100%; height: 100%;" v-if="this.percentage < 100">
-        <apexchart
-          width="100%"
-          height="100%"
-          type="donut"
-          :options="options"
-          :series="series"
-        ></apexchart>
+      <div style="width: 100%; height: 100%;">
+        <div
+          v-if="this.percentage < 100"
+          class="d-flex justify-center align-center"
+          style="width: 100%; height: 100%;"
+        >
+          <apexchart
+            width="100%"
+            height="100%"
+            type="donut"
+            :options="options"
+            :series="series"
+          ></apexchart>
+        </div>
+
+        <div
+          class="d-flex justify-center align-center"
+          style="width: 100%; height: 100%;"
+          v-else
+        >
+          <v-icon color="#5f4c8f" style="font-size:280px">
+            mdi-check-bold
+          </v-icon>
+        </div>
       </div>
+
       <div
-        class="d-flex justify-center align-center"
-        style="width: 100%; height: 100%;"
-        v-else
+        style="position: absolute; max-width:150px; max-height:150px; text-align:center;text-overflow: ellipsis;overflow: hidden;white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap;    
+   white-space: -pre-wrap;     
+   white-space: -o-pre-wrap;      
+   word-wrap: break-word;"
       >
-        <v-icon color="#5f4c8f" style="font-size:280px">
-          mdi-check-bold
-        </v-icon>
-      </div>
-      <div style="position: absolute;">
-        <div class="text-h5" style="color:white">
+        <div class="text-h5" style="color:white;">
           {{ trainingPlanName }}
         </div>
-        <div class="text-caption" style="color:white">
+        <div class="text-caption" style="color:white;">
           by <span>{{ userName }}</span>
         </div>
       </div>

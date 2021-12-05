@@ -21,6 +21,7 @@ let store = {};
 
   resolveStoreModules(require('../store/certificates.js'), 'certificates.js')
   resolveStoreModules(require('../store/comments.js'), 'comments.js')
+  resolveStoreModules(require('../store/loggedInUser.js'), 'loggedInUser.js')
   resolveStoreModules(require('../store/lookedAtUser.js'), 'lookedAtUser.js')
   resolveStoreModules(require('../store/plan.js'), 'plan.js')
   resolveStoreModules(require('../store/plans.js'), 'plans.js')
@@ -33,6 +34,7 @@ let store = {};
       '../store/certificates.js',
       '../store/comments.js',
       '../store/index.js',
+      '../store/loggedInUser.js',
       '../store/lookedAtUser.js',
       '../store/plan.js',
       '../store/plans.js',

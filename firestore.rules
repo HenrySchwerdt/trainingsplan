@@ -1,9 +1,56 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2021, 11, 17);
+
+    function isLoggedIn(){
+      return request.auth != null;
     }
+    // User can only be created when a user is logged in. Read is always true. Modify and Delete only if the user owns the useritem.
+    match /users/{userId} {
+      allow create: if isLoggedIn();
+      allow read: if true;
+      allow update, delete: if isLoggedIn() && request.auth.uid == userId;
+
+
+      function ownerOfUser() {
+        return isLoggedIn() && request.auth.uid == userId;
+      }
+
+      match /follows/{id} {
+        allow read;
+        allow create, update, delete: if ownerOfUser();
+      }
+    }
+
+    // Everyone can only read this table
+    match /certificates/{certificate} {
+      allow read: if true;
+      allow create, update, delete: if false;
+    }
+
+    // plans can only be created by a logged in user and only modfied by a the user who created the plan
+    match /plans/{plan} {
+      
+      function ownerOfPlan() {
+        return isLoggedIn() && request.auth.uid == get(/databases/$(database)/documents/plans/$(plan)).data.created_by;
+      }
+
+
+      allow read: if true;
+      allow create: if isLoggedIn();
+      allow update, delete: if ownerOfPlan();
+      
+      match /trainings/{training} {
+        allow read: if true;
+        allow create, update, delete: if ownerOfPlan();
+      }
+
+      match /comments/{comment} {
+        allow read: if true;
+        allow create: if isLoggedIn();
+        allow update, delete: if ownerOfPlan();
+      }
+    }
+
   }
 }

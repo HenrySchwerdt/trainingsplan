@@ -15,14 +15,14 @@ export const actions = {
   bindRef: firestoreAction(function({ bindFirestoreRef }, userId) {
     return bindFirestoreRef(
       "user",
-      this.$fire.firestore.collection("user").doc(userId)
+      this.$fire.firestore.collection("users").doc(userId)
     );
   }),
   /**
    * unbinds the items property to the firestore
    */
   unbindRef: firestoreAction(function({ unbindFirestoreRef }) {
-    unbindFirestoreRef("user", false);
+    unbindFirestoreRef("users", false);
   }),
   updateProgress: firestoreAction(async function(
     _firestoreObject,

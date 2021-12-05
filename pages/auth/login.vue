@@ -18,7 +18,6 @@
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
-                color="accent"
                 label="E-mail"
                 required
               ></v-text-field>
@@ -33,18 +32,12 @@
                 label="Password"
                 hint="At least 8 characters"
                 counter
-                color="accent"
                 @click:append="show = !show"
               ></v-text-field>
             </v-col>
             <v-spacer></v-spacer>
             <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-              <v-btn
-                block
-                outlined
-                :disabled="!valid"
-                color="blue-grey"
-                @click="firebaseLogin"
+              <v-btn block outlined :disabled="!valid" @click="firebaseLogin"
                 >Login</v-btn
               >
             </v-col>

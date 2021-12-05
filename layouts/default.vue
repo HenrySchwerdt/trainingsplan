@@ -25,7 +25,7 @@
         ><v-btn icon color="#A82465"><v-icon> mdi-cog</v-icon></v-btn></a
       >
       <a v-if="$store.state.user" style="text-decoration: none"
-        ><v-btn @click="$fire.auth.signOut()" icon color="#A82465"
+        ><v-btn @click="logout()" icon color="#A82465"
           ><v-icon> mdi-logout</v-icon></v-btn
         ></a
       >
@@ -69,6 +69,9 @@ export default {
   },
   methods: {
     routeToLogin: () => {},
+    logout() {
+      this.$fire.auth.signOut().then(() => this.$router.push("/"));
+    },
   },
 };
 </script>

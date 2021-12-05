@@ -11,7 +11,7 @@
         height +
         'px; font-weight: bold; background:' +
         colorCodes[type] +
-        '; color: white;margin:0;padding:0'
+        '; color: white;margin:0;padding:0;white-space: wrap;overflow:hidden'
     "
     class="d-flex flex-column align-center justify-center"
   >

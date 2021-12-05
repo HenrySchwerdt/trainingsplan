@@ -7,7 +7,31 @@
         v-if="plan && plan.title"
       >
         {{ plan.title }}
-        <v-btn text x-small color="primary" class="ml-2">Follow</v-btn>
+        <div
+          v-if="
+            $fire.auth.currentUser &&
+              plan.created_by != $fire.auth.currentUser.uid
+          "
+        >
+          <v-btn
+            v-if="follows.find((x) => x.planId == $route.params.id)"
+            text
+            x-small
+            @click="unfollow()"
+            color="primary"
+            class="ml-2"
+            >Unfollow</v-btn
+          >
+          <v-btn
+            v-else
+            text
+            x-small
+            color="primary"
+            class="ml-2"
+            @click="follow()"
+            >Follow</v-btn
+          >
+        </div>
       </div>
       <div class="text-caption" v-if="plan && plan.created_by_name">
         <a :href="'/app/' + plan.created_by" style="text-decoration: none; "
@@ -139,6 +163,9 @@ export default {
   }),
   async mounted() {
     try {
+      this.$fire.auth.currentUser &&
+        this.$fire.auth.currentUser.uid &&
+        (await this.$store.dispatch("loggedInUser/bindRef"));
       await this.$store.dispatch("plan/bindRef", this.$route.params.id);
       await this.$store.dispatch("certificates/bindCertificatesRef");
     } catch (e) {
@@ -155,6 +182,16 @@ export default {
         planId: this.$route.params.id,
         trainingId: id,
         progress: progress,
+      });
+    },
+    follow() {
+      this.$store.dispatch("loggedInUser/followPlan", {
+        planId: this.$route.params.id,
+      });
+    },
+    unfollow() {
+      this.$store.dispatch("loggedInUser/unfollowPlan", {
+        planId: this.$route.params.id,
       });
     },
   },
@@ -177,6 +214,11 @@ export default {
     certificatesID: {
       get() {
         return this.$store.getters["certificates/get"].map((x) => x.id);
+      },
+    },
+    follows: {
+      get() {
+        return this.$store.getters["loggedInUser/getFollows"];
       },
     },
     series() {

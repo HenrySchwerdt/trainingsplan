@@ -3,56 +3,48 @@
     "name": "app-explore",
     "path": "/app/explore",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/explore.vue",
-    "chunkName": "pages/app/explore",
-    "_name": "_e72318ec"
+    "chunkName": "pages/app/explore"
   },
   {
     "name": "app-settings",
     "path": "/app/settings",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/settings.vue",
-    "chunkName": "pages/app/settings",
-    "_name": "_d0c74d88"
+    "chunkName": "pages/app/settings"
   },
   {
     "name": "auth-login",
     "path": "/auth/login",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/auth/login.vue",
-    "chunkName": "pages/auth/login",
-    "_name": "_2eb4cd6d"
+    "chunkName": "pages/auth/login"
   },
   {
     "name": "auth-register",
     "path": "/auth/register",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/auth/register.vue",
-    "chunkName": "pages/auth/register",
-    "_name": "_007eb84f"
+    "chunkName": "pages/auth/register"
   },
   {
     "name": "app-trainingsplan-create",
     "path": "/app/trainingsplan/create",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/trainingsplan/create.vue",
-    "chunkName": "pages/app/trainingsplan/create",
-    "_name": "_5cae5a7c"
+    "chunkName": "pages/app/trainingsplan/create"
   },
   {
     "name": "app-trainingsplan-id",
     "path": "/app/trainingsplan/:id?",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/trainingsplan/_id.vue",
-    "chunkName": "pages/app/trainingsplan/_id",
-    "_name": "_555218e4"
+    "chunkName": "pages/app/trainingsplan/_id"
   },
   {
     "name": "app-userId",
     "path": "/app/:userId?",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/app/_userId.vue",
-    "chunkName": "pages/app/_userId",
-    "_name": "_7088eb5c"
+    "chunkName": "pages/app/_userId"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/heschwerdt/currentWork/trainingsplan/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_19521af7"
+    "chunkName": "pages/index"
   }
 ]

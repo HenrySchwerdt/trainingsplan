@@ -19,7 +19,6 @@
                 v-model="username"
                 :rules="[rules.required]"
                 label="Username"
-                color="accent"
                 maxlength="20"
                 required
               ></v-text-field>
@@ -28,7 +27,6 @@
               <v-text-field
                 v-model="email"
                 :rules="emailRules"
-                color="accent"
                 label="E-mail"
                 required
               ></v-text-field>
@@ -43,7 +41,6 @@
                 label="Password"
                 hint="At least 8 characters"
                 counter
-                color="accent"
                 @click:append="show = !show"
               ></v-text-field>
             </v-col>
@@ -55,7 +52,6 @@
                 :rules="[rules.required, passwordMatch]"
                 :type="show ? 'text' : 'password'"
                 name="input-10-1"
-                color="accent"
                 label="Confirm Password"
                 counter
                 @click:append="show = !show"
@@ -63,12 +59,7 @@
             </v-col>
             <v-spacer></v-spacer>
             <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-              <v-btn
-                block
-                outlined
-                :disabled="!valid"
-                color="blue-grey"
-                @click="firebaseRegister"
+              <v-btn block outlined :disabled="!valid" @click="firebaseRegister"
                 >Register</v-btn
               >
             </v-col>
@@ -130,7 +121,7 @@ export default {
                 });
             })
             .then(() => {
-              this.$router.push("/app");
+              this.$router.push("/");
             });
         } catch (e) {
           alert(e);
