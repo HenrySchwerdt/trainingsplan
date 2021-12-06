@@ -59,7 +59,12 @@
             </v-col>
             <v-spacer></v-spacer>
             <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-              <v-btn block outlined :disabled="!valid" @click="firebaseRegister"
+              <v-btn
+                block
+                outlined
+                :disabled="!valid"
+                @click="firebaseRegister"
+                color="primary"
                 >Register</v-btn
               >
             </v-col>

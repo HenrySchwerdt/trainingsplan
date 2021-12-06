@@ -3,6 +3,7 @@
     <div class="text-h6 mb-2">Comments:</div>
 
     <v-text-field
+      v-if="$fire.auth.currentUser"
       v-model="message"
       :append-outer-icon="message ? 'mdi-send' : ''"
       clear-icon="mdi-close-circle"

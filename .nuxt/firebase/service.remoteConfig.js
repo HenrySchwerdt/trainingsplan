@@ -6,7 +6,7 @@ export default async function (session) {
     return
   }
 
-  await import('firebase/remote-config')
+  await import(/* webpackChunkName: 'firebase-remote-config' */'firebase/remote-config')
 
   const remoteConfigService = session.remoteConfig()
 

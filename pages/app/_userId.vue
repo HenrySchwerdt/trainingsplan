@@ -1,10 +1,7 @@
 <template>
   <div>
     <v-sheet
-      v-if="
-        this.$fire.auth.currentUser &&
-          this.$route.params.userId == this.$fire.auth.currentUser.uid
-      "
+      v-if="isUsersPage"
       elevation="3"
       rounded
       style="position: absolute;right:10px"
@@ -27,13 +24,7 @@
     </v-sheet>
     <v-row class="mt-12" justify="center" align="center">
       <v-col cols="8">
-        <div
-          v-if="
-            this.$fire.auth.currentUser &&
-              this.$route.params.userId == this.$fire.auth.currentUser.uid
-          "
-          class="text-h4 mb-2"
-        >
+        <div v-if="isUsersPage" class="text-h4 mb-2">
           My trainings path
         </div>
 
@@ -50,7 +41,7 @@
         <div
           style="display: grid;grid-template-columns: repeat(auto-fill, 150px);justify-content: space-between;grid-gap: 15px;width: 100%"
         >
-          <add-plan-field />
+          <add-plan-field v-if="isUsersPage" />
           <div
             v-for="(plan, id) in plans.filter((x) => x.percentange < 100)"
             :key="id"
@@ -137,6 +128,14 @@ export default {
     follows: {
       get() {
         return this.$store.getters["loggedInUser/getFollows"];
+      },
+    },
+    isUsersPage: {
+      get() {
+        return (
+          this.$fire.auth.currentUser &&
+          this.$fire.auth.currentUser.uid == this.$route.params.userId
+        );
       },
     },
   },

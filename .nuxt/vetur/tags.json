@@ -17,6 +17,9 @@
   "TrainingPlanLink": {
     "description": "Auto imported from components/TrainingPlanLink.vue"
   },
+  "CommentsCommentDisplay": {
+    "description": "Auto imported from components/comments/CommentDisplay.vue"
+  },
   "TrainingsPlanSelectorTrainingDraggable": {
     "description": "Auto imported from components/trainingsPlanSelector/TrainingDraggable.vue"
   },
@@ -25,8 +28,5 @@
   },
   "TrainingsPlanSelectorContainer": {
     "description": "Auto imported from components/trainingsPlanSelector/TrainingsPlanSelectorContainer.vue"
-  },
-  "CommentsCommentDisplay": {
-    "description": "Auto imported from components/comments/CommentDisplay.vue"
   }
 }

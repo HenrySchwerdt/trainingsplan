@@ -7,12 +7,7 @@
         v-if="plan && plan.title"
       >
         {{ plan.title }}
-        <div
-          v-if="
-            $fire.auth.currentUser &&
-              plan.created_by != $fire.auth.currentUser.uid
-          "
-        >
+        <div v-if="isUsersPage">
           <v-btn
             v-if="follows.find((x) => x.planId == $route.params.id)"
             text
@@ -289,6 +284,14 @@ export default {
         },
       };
       return options;
+    },
+    isUsersPage: {
+      get() {
+        return (
+          this.$fire.auth.currentUser &&
+          this.$fire.auth.currentUser.uid == this.plan.created_by
+        );
+      },
     },
   },
   components: { TrainingDraggable, CommentSection },

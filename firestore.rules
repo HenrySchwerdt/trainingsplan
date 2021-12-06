@@ -7,7 +7,7 @@ service cloud.firestore {
     }
     // User can only be created when a user is logged in. Read is always true. Modify and Delete only if the user owns the useritem.
     match /users/{userId} {
-      allow create: if true;
+      allow create: if true; //IsLoggedIn()?
       allow read: if true;
       allow update, delete: if isLoggedIn() && request.auth.uid == userId;
 
@@ -36,7 +36,7 @@ service cloud.firestore {
       }
 
       allow read: if true;
-      allow create: if request.auth != null;
+      allow create: if isLoggedIn();
       allow update, delete: if resource.data.created_by == request.auth.uid;
       
       match /trainings/{training} {

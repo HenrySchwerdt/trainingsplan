@@ -37,7 +37,12 @@
             </v-col>
             <v-spacer></v-spacer>
             <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-              <v-btn block outlined :disabled="!valid" @click="firebaseLogin"
+              <v-btn
+                block
+                outlined
+                :disabled="!valid"
+                @click="firebaseLogin"
+                color="primary"
                 >Login</v-btn
               >
             </v-col>
@@ -69,7 +74,7 @@ export default {
         try {
           this.$fire.auth
             .signInWithEmailAndPassword(this.email.trim(), this.password)
-            .then(() => this.$router.push("/app"));
+            .then(() => this.$router.push("/"));
         } catch (e) {
           alert(e);
         }

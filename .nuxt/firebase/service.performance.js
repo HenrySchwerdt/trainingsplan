@@ -6,7 +6,7 @@ export default async function (session) {
     return
   }
 
-  await import('firebase/performance')
+  await import(/* webpackChunkName: 'firebase-performance' */'firebase/performance')
 
   const performanceService = session.performance()
   return performanceService
