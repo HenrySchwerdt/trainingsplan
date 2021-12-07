@@ -7,7 +7,12 @@
         v-if="plan && plan.title"
       >
         {{ plan.title }}
-        <div v-if="isUsersPage">
+        <div
+          v-if="
+            $fire.auth.currentUser &&
+              $fire.auth.currentUser.uid != plan.created_by
+          "
+        >
           <v-btn
             v-if="follows.find((x) => x.planId == $route.params.id)"
             text
@@ -26,6 +31,16 @@
             @click="follow()"
             >Follow</v-btn
           >
+        </div>
+        <div
+          v-if="
+            $fire.auth.currentUser &&
+              $fire.auth.currentUser.uid != plan.created_by
+          "
+        >
+          <v-btn icon @click="forkPlan" color="primary">
+            <v-icon>mdi-plus-box</v-icon>
+          </v-btn>
         </div>
       </div>
       <div class="text-caption" v-if="plan && plan.created_by_name">
@@ -189,6 +204,16 @@ export default {
         planId: this.$route.params.id,
       });
     },
+    forkPlan() {
+      const ref = this.$fire.firestore.collection("plans").doc();
+      this.$store
+        .dispatch("plan/forkPlan", {
+          ref,
+          trainings: this.trainings,
+          plan: this.plan,
+        })
+        .then(this.$router.push("/app/trainingsplan/" + ref.id));
+    },
   },
   computed: {
     plan: {
@@ -284,14 +309,6 @@ export default {
         },
       };
       return options;
-    },
-    isUsersPage: {
-      get() {
-        return (
-          this.$fire.auth.currentUser &&
-          this.$fire.auth.currentUser.uid == this.plan.created_by
-        );
-      },
     },
   },
   components: { TrainingDraggable, CommentSection },

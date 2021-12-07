@@ -64,6 +64,36 @@ export const actions = {
     });
     await batch.commit();
   }),
+
+  forkPlan: firestoreAction(async function(
+    _firestoreObject,
+    { ref, trainings, plan }
+  ) {
+    if (this.$fire.auth.currentUser) {
+      await ref.set({
+        title: plan.title,
+        created_by: this.$fire.auth.currentUser.uid,
+        due_date: plan.due_date,
+        percentange: 0,
+        created_by_name: this.$fire.auth.currentUser.displayName,
+        created_at: this.$fireModule.firestore.FieldValue.serverTimestamp(),
+      });
+      const batch = this.$fire.firestore.batch();
+      const collectionRef = this.$fire.firestore
+        .collection("plans")
+        .doc(ref.id)
+        .collection("trainings");
+      for (const { certificate_id, priority } of trainings) {
+        const itemRef = collectionRef.doc();
+        batch.set(itemRef, {
+          certificate_id: certificate_id,
+          progress: 0,
+          priority: priority,
+        });
+      }
+      await batch.commit();
+    }
+  }),
 };
 
 export const getters = {
