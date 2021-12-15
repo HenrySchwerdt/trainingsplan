@@ -82,14 +82,7 @@ export default {
     itemAmount: 4,
     items: { 1: undefined, 2: undefined, 3: undefined, 4: undefined },
     search: {
-      filterItems: [
-        "all",
-        "Knowlegde",
-        "Scrum",
-        "Course",
-        "Certificate",
-        "Soft Skills",
-      ],
+      filterItems: ["all", "Knowlegde", "Course", "Certificate", "Soft Skills"],
       filter: "all",
       searchText: "",
     },
@@ -110,9 +103,13 @@ export default {
         .filter(
           (x) => !this.selectedIDs().includes(this.certificates.indexOf(x))
         )
-        .filter((x) => x.training.includes(this.search.searchText))
+        .filter(
+          (x) =>
+            x.training.includes(this.search.searchText) ||
+            x.display_name.includes(this.search.searchText)
+        )
         .filter((x) =>
-          this.search.filter == "all" ? true : x.area == this.search.filter
+          this.search.filter == "all" ? true : x.type == this.search.filter
         );
     },
     dragStart(event, id) {
