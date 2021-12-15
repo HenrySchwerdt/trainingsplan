@@ -13,7 +13,7 @@ You can directly use them in pages and other components without the need to impo
 - `<FollowedCard>` | `<followed-card>` (components/FollowedCard.vue)
 - `<PopUpCard>` | `<pop-up-card>` (components/PopUpCard.vue)
 - `<TrainingPlanLink>` | `<training-plan-link>` (components/TrainingPlanLink.vue)
-- `<CommentsCommentDisplay>` | `<comments-comment-display>` (components/comments/CommentDisplay.vue)
 - `<TrainingsPlanSelectorTrainingDraggable>` | `<trainings-plan-selector-training-draggable>` (components/trainingsPlanSelector/TrainingDraggable.vue)
 - `<TrainingsPlanSelectorTrainingDropZone>` | `<trainings-plan-selector-training-drop-zone>` (components/trainingsPlanSelector/TrainingDropZone.vue)
 - `<TrainingsPlanSelectorContainer>` | `<trainings-plan-selector-container>` (components/trainingsPlanSelector/TrainingsPlanSelectorContainer.vue)
+- `<CommentsCommentDisplay>` | `<comments-comment-display>` (components/comments/CommentDisplay.vue)

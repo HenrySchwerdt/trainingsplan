@@ -105,8 +105,12 @@ export default {
         )
         .filter(
           (x) =>
-            x.training.includes(this.search.searchText) ||
-            x.display_name.includes(this.search.searchText)
+            x.training
+              .toLowerCase()
+              .includes(this.search.searchText.toLowerCase()) ||
+            x.display_name
+              .toLowerCase()
+              .includes(this.search.searchText.toLowerCase())
         )
         .filter((x) =>
           this.search.filter == "all" ? true : x.type == this.search.filter
