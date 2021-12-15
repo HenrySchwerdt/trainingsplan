@@ -16,6 +16,7 @@
               :title="
                 certificates[certificatesID.indexOf(items[index])].display_name
               "
+              :training="certificates[certificatesID.indexOf(items[index])]"
               :type="certificates[certificatesID.indexOf(items[index])].type"
             ></TrainingDraggable>
           </div>
@@ -57,6 +58,7 @@
                     class="ma-3"
                     :id="item.id"
                     :title="item.display_name"
+                    :training="item"
                     :type="item.type"
                   ></TrainingDraggable>
                 </div>

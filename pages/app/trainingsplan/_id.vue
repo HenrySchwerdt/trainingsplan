@@ -78,6 +78,7 @@
                     rounded
                     :key="idx"
                     :id="training.id"
+                    :training="getCertificatebyId(training.certificate_id)"
                     :height="100"
                     :width="150"
                     :title="

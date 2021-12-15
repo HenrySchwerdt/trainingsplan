@@ -30,4 +30,10 @@ export const getters = {
   get: (state) => {
     return state.items;
   },
+  getSpecific: (state) => (id) => {
+    return state.items.find((x) => {
+      console.log(x.id == id);
+      return x.id == id;
+    });
+  },
 };

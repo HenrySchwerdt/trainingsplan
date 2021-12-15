@@ -1,4 +1,5 @@
 export { default as AddPlanField } from '../../components/AddPlanField.vue'
+export { default as CertificatePopup } from '../../components/CertificatePopup.vue'
 export { default as CertificatePresentation } from '../../components/CertificatePresentation.vue'
 export { default as CommentSection } from '../../components/CommentSection.vue'
 export { default as FollowedCard } from '../../components/FollowedCard.vue'

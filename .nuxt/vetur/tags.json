@@ -2,6 +2,9 @@
   "AddPlanField": {
     "description": "Auto imported from components/AddPlanField.vue"
   },
+  "CertificatePopup": {
+    "description": "Auto imported from components/CertificatePopup.vue"
+  },
   "CertificatePresentation": {
     "description": "Auto imported from components/CertificatePresentation.vue"
   },
